@@ -1,0 +1,6 @@
+{
+  "name": "GuessMate",
+  "description": "Marketing & Interactive Specification Site for GuessMate - Real-time Multiplayer Social Deduction Game",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
