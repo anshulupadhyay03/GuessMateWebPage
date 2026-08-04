@@ -29,6 +29,35 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
+// Pre-registration Google Sheet webhook proxy
+app.post('/api/pre-register', async (req, res) => {
+  try {
+    const { email, platform } = req.body;
+    const sheetUrl = process.env.VITE_GOOGLE_SHEET_URL || process.env.GOOGLE_SHEET_URL;
+
+    if (!email) {
+      return res.status(400).json({ error: 'Email is required' });
+    }
+
+    if (sheetUrl) {
+      try {
+        await fetch(sheetUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, platform, timestamp: new Date().toISOString() }),
+        });
+      } catch (err) {
+        console.error('Failed to forward email to Google Sheet URL:', err);
+      }
+    }
+
+    res.json({ status: 'success', email });
+  } catch (err: any) {
+    console.error('Pre-registration server error:', err);
+    res.status(500).json({ error: 'Failed to process pre-registration', details: err.message });
+  }
+});
+
 // AI Fair Play Review API Endpoint
 app.post('/api/ai-review', async (req, res) => {
   try {

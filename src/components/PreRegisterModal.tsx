@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, CheckCircle2, Mail, ArrowRight } from 'lucide-react';
+import { X, CheckCircle2, Mail, ArrowRight, Loader2 } from 'lucide-react';
 import { GuessMateIcon } from './GuessMateIcon';
 
 interface PreRegisterModalProps {
@@ -11,13 +11,43 @@ export const PreRegisterModal: React.FC<PreRegisterModalProps> = ({ isOpen, onCl
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [platform, setPlatform] = useState<'iOS' | 'Android'>('Android');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
-    setSubmitted(true);
+    if (!email || isSubmitting) return;
+
+    setIsSubmitting(true);
+
+    const sheetUrl = import.meta.env.VITE_GOOGLE_SHEET_URL;
+
+    try {
+      // 1. Post to Google Sheet URL if configured
+      if (sheetUrl) {
+        await fetch(sheetUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, platform, timestamp: new Date().toISOString() }),
+        });
+      }
+
+      // 2. Post to server endpoint as backup / proxy logger
+      await fetch('/api/pre-register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, platform }),
+      }).catch(() => {});
+    } catch (err) {
+      console.error('Error submitting pre-registration:', err);
+    } finally {
+      setIsSubmitting(false);
+      setSubmitted(true);
+    }
   };
 
   return (
@@ -68,19 +98,30 @@ export const PreRegisterModal: React.FC<PreRegisterModalProps> = ({ isOpen, onCl
                 <input
                   type="email"
                   required
+                  disabled={isSubmitting}
                   placeholder="Enter your email address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-[#0B1020] border border-slate-800 rounded-xl text-xs text-white focus:outline-none focus:border-blue-500"
+                  className="w-full pl-10 pr-4 py-3 bg-[#0B1020] border border-slate-800 rounded-xl text-xs text-white focus:outline-none focus:border-blue-500 disabled:opacity-50"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3.5 rounded-xl font-semibold text-xs text-white bg-blue-600 hover:bg-blue-500 transition-all flex items-center justify-center space-x-2 shadow-sm"
+                disabled={isSubmitting}
+                className="w-full py-3.5 rounded-xl font-semibold text-xs text-white bg-blue-600 hover:bg-blue-500 disabled:opacity-50 transition-all flex items-center justify-center space-x-2 shadow-sm"
               >
-                <span>Reserve Beta Spot & Claim Founder Badge</span>
-                <ArrowRight className="w-4 h-4 text-blue-100" />
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 text-blue-100 animate-spin" />
+                    <span>Registering Email...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Reserve Beta Spot & Claim Founder Badge</span>
+                    <ArrowRight className="w-4 h-4 text-blue-100" />
+                  </>
+                )}
               </button>
             </form>
 
@@ -108,3 +149,4 @@ export const PreRegisterModal: React.FC<PreRegisterModalProps> = ({ isOpen, onCl
     </div>
   );
 };
+
