@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { X, CheckCircle2, Mail, ArrowRight, Loader2 } from 'lucide-react';
-import { GuessMateIcon } from './GuessMateIcon';
+import { GuessMachaIcon } from './GuessMateIcon';
 
 interface PreRegisterModalProps {
   isOpen: boolean;
@@ -52,11 +52,11 @@ export const PreRegisterModal: React.FC<PreRegisterModalProps> = ({ isOpen, onCl
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-      <div className="relative w-full max-w-md bg-[#131A2A] border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+      <div className="relative w-full max-w-md bg-[#00253e] border border-[#003A5D] rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl">
         
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 text-slate-400 hover:text-white rounded-lg bg-[#0B1020]"
+          className="absolute top-5 right-5 p-2 text-slate-300 hover:text-white rounded-lg bg-[#001D31]"
         >
           <X className="w-4 h-4" />
         </button>
@@ -64,12 +64,12 @@ export const PreRegisterModal: React.FC<PreRegisterModalProps> = ({ isOpen, onCl
         {!submitted ? (
           <div className="space-y-6 text-center">
             <div className="flex justify-center">
-              <GuessMateIcon size="lg" />
+              <GuessMachaIcon size="lg" />
             </div>
 
             <div className="space-y-2">
               <h3 className="text-xl font-bold text-white">Pre-Register for App Store Launch</h3>
-              <p className="text-xs text-slate-300">
+              <p className="text-xs text-slate-200">
                 Receive early match invitation keys, competitive rank badges, and private beta access on iOS & Android.
               </p>
             </div>
@@ -83,8 +83,8 @@ export const PreRegisterModal: React.FC<PreRegisterModalProps> = ({ isOpen, onCl
                   onClick={() => setPlatform(p)}
                   className={`py-2 rounded-xl font-semibold text-xs transition-all border ${
                     platform === p
-                      ? 'bg-blue-600 text-white border-blue-500 shadow-sm'
-                      : 'bg-[#0B1020] text-slate-400 border-slate-800'
+                      ? 'bg-[#CA4D4E] text-white border-[#CA4D4E] shadow-sm'
+                      : 'bg-[#001D31] text-slate-300 border-[#003A5D]'
                   }`}
                 >
                   {p}
@@ -94,7 +94,7 @@ export const PreRegisterModal: React.FC<PreRegisterModalProps> = ({ isOpen, onCl
 
             <form onSubmit={handleSubmit} className="space-y-3">
               <div className="relative">
-                <Mail className="w-4 h-4 text-slate-500 absolute left-3.5 top-3.5" />
+                <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                 <input
                   type="email"
                   required
@@ -102,30 +102,30 @@ export const PreRegisterModal: React.FC<PreRegisterModalProps> = ({ isOpen, onCl
                   placeholder="Enter your email address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-[#0B1020] border border-slate-800 rounded-xl text-xs text-white focus:outline-none focus:border-blue-500 disabled:opacity-50"
+                  className="w-full pl-10 pr-4 py-3 bg-[#001D31] border border-[#003A5D] rounded-xl text-xs text-white focus:outline-none focus:border-[#CA4D4E] disabled:opacity-50 font-medium"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3.5 rounded-xl font-semibold text-xs text-white bg-blue-600 hover:bg-blue-500 disabled:opacity-50 transition-all flex items-center justify-center space-x-2 shadow-sm"
+                className="w-full py-3.5 rounded-xl font-semibold text-xs text-white bg-[#CA4D4E] hover:bg-[#b83d3e] disabled:opacity-50 transition-all flex items-center justify-center space-x-2 shadow-lg"
               >
                 {isSubmitting ? (
                   <>
-                    <Loader2 className="w-4 h-4 text-blue-100 animate-spin" />
+                    <Loader2 className="w-4 h-4 text-[#E8E61A] animate-spin" />
                     <span>Registering Email...</span>
                   </>
                 ) : (
                   <>
                     <span>Reserve Beta Spot & Claim Founder Badge</span>
-                    <ArrowRight className="w-4 h-4 text-blue-100" />
+                    <ArrowRight className="w-4 h-4 text-[#E8E61A]" />
                   </>
                 )}
               </button>
             </form>
 
-            <p className="text-[10px] text-slate-500 font-mono">
+            <p className="text-[10px] text-slate-400 font-mono">
               Zero spam. Unsubscribe anytime. 100% skill-based strategy platform.
             </p>
           </div>
@@ -133,12 +133,12 @@ export const PreRegisterModal: React.FC<PreRegisterModalProps> = ({ isOpen, onCl
           <div className="text-center space-y-4 py-6">
             <CheckCircle2 className="w-10 h-10 text-emerald-400 mx-auto" />
             <h3 className="text-lg font-bold text-white">Registered for Early Access</h3>
-            <p className="text-xs text-slate-300">
-              We've registered <strong className="text-white font-mono">{email}</strong> for {platform} access. Watch your inbox for competitive match keys!
+            <p className="text-xs text-slate-200">
+              We've registered <strong className="text-[#E8E61A] font-mono">{email}</strong> for {platform} access. Watch your inbox for competitive match keys!
             </p>
             <button
               onClick={onClose}
-              className="px-6 py-2.5 rounded-xl font-semibold text-xs text-white bg-blue-600 hover:bg-blue-500"
+              className="px-6 py-2.5 rounded-xl font-semibold text-xs text-white bg-[#CA4D4E] hover:bg-[#b83d3e]"
             >
               Return to Website
             </button>

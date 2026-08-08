@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface GuessMateIconProps {
+interface GuessMachaIconProps {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
   showGlow?: boolean;
 }
 
-export const GuessMateIcon: React.FC<GuessMateIconProps> = ({
+export const GuessMachaIcon: React.FC<GuessMachaIconProps> = ({
   size = 'md',
   className = '',
 }) => {
@@ -20,10 +20,10 @@ export const GuessMateIcon: React.FC<GuessMateIconProps> = ({
 
   return (
     <div className={`relative inline-flex items-center justify-center select-none ${className}`}>
-      {/* Container - Subtle dark slate with crisp border */}
-      <div className={`relative ${dimensions.box} ${dimensions.rounded} bg-[#131A2A] border border-slate-700/70 p-2 shadow-sm flex items-center justify-center overflow-hidden transition-all duration-200 hover:border-slate-600`}>
+      {/* Container - Deep Tertiary Navy with primary crisp border */}
+      <div className={`relative ${dimensions.box} ${dimensions.rounded} bg-[#003A5D] border border-[#CA4D4E]/60 p-2 shadow-md flex items-center justify-center overflow-hidden transition-all duration-200 hover:border-[#CA4D4E]`}>
         {/* Subtle grid pattern background */}
-        <div className="absolute inset-0 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:12px_12px] opacity-10" />
+        <div className="absolute inset-0 bg-[radial-gradient(#E8E61A_1px,transparent_1px)] [background-size:12px_12px] opacity-15" />
 
         {/* Crisp Strategy Vector Graphic (Clean Interlocking Strategy Node + G) */}
         <svg
@@ -35,32 +35,35 @@ export const GuessMateIcon: React.FC<GuessMateIconProps> = ({
           className="relative z-10"
         >
           <defs>
-            <linearGradient id="gm-blue-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#60A5FA" />
-              <stop offset="100%" stopColor="#3B82F6" />
+            <linearGradient id="gm-primary-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#CA4D4E" />
+              <stop offset="100%" stopColor="#e26162" />
             </linearGradient>
-            <linearGradient id="gm-indigo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#818CF8" />
-              <stop offset="100%" stopColor="#6366F1" />
+            <linearGradient id="gm-secondary-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#E8E61A" />
+              <stop offset="100%" stopColor="#f3f15c" />
             </linearGradient>
           </defs>
 
           {/* Strategy Network Nodes */}
           <path
             d="M10 20 L20 10 L30 20 L20 30 Z"
-            stroke="url(#gm-blue-grad)"
+            stroke="url(#gm-primary-grad)"
             strokeWidth="2.5"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-          <circle cx="20" cy="20" r="3" fill="#3B82F6" />
-          <line x1="20" y1="10" x2="20" y2="30" stroke="url(#gm-indigo-grad)" strokeWidth="1.5" strokeDasharray="2 2" />
-          <circle cx="10" cy="20" r="2" fill="#94A3B8" />
-          <circle cx="30" cy="20" r="2" fill="#94A3B8" />
-          <circle cx="20" cy="10" r="2" fill="#60A5FA" />
-          <circle cx="20" cy="30" r="2" fill="#818CF8" />
+          <circle cx="20" cy="20" r="3" fill="#E8E61A" />
+          <line x1="20" y1="10" x2="20" y2="30" stroke="url(#gm-secondary-grad)" strokeWidth="1.5" strokeDasharray="2 2" />
+          <circle cx="10" cy="20" r="2" fill="#FFFFFF" />
+          <circle cx="30" cy="20" r="2" fill="#FFFFFF" />
+          <circle cx="20" cy="10" r="2" fill="#CA4D4E" />
+          <circle cx="20" cy="30" r="2" fill="#E8E61A" />
         </svg>
       </div>
     </div>
   );
 };
+
+export const GuessMateIcon = GuessMachaIcon;
+

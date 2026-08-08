@@ -67,34 +67,34 @@ export const GameplayModal: React.FC<GameplayModalProps> = ({ isOpen, onClose, o
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-      <div className="relative w-full max-w-2xl bg-[#131A2A] border border-slate-800 rounded-2xl p-6 space-y-6 shadow-xl">
+      <div className="relative w-full max-w-2xl bg-[#00253e] border border-[#003A5D] rounded-2xl p-6 space-y-6 shadow-2xl">
         
         {/* Header */}
-        <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+        <div className="flex items-center justify-between pb-4 border-b border-[#003A5D]">
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
-              <Play className="w-4 h-4 fill-current text-blue-400" />
+            <div className="w-8 h-8 rounded-xl bg-[#003A5D] border border-[#CA4D4E]/40 flex items-center justify-center text-[#E8E61A]">
+              <Play className="w-4 h-4 fill-current text-[#E8E61A]" />
             </div>
             <div>
               <h3 className="font-bold text-base text-white">Competitive Match Simulation</h3>
-              <p className="text-xs text-slate-400">Step-by-step match replay timeline</p>
+              <p className="text-xs text-slate-300">Step-by-step match replay timeline</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 text-slate-400 hover:text-white rounded-lg bg-[#0B1020]"
+            className="p-2 text-slate-300 hover:text-white rounded-lg bg-[#001D31]"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Animated Match Screen Container */}
-        <div className="p-5 rounded-xl bg-[#0B1020] border border-slate-800 space-y-4">
+        <div className="p-5 rounded-xl bg-[#001D31] border border-[#003A5D] space-y-4">
           <div className="flex items-center justify-between text-xs">
-            <span className="px-2.5 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20 font-mono font-bold">
+            <span className="px-2.5 py-0.5 rounded bg-[#003A5D] text-[#E8E61A] border border-[#CA4D4E]/40 font-mono font-bold">
               STEP {currentStepIndex + 1} OF {MATCH_TIMELINE.length}
             </span>
-            <span className="font-mono text-slate-400 font-semibold">TIME: {currentStep.time}</span>
+            <span className="font-mono text-slate-300 font-semibold">TIME: {currentStep.time}</span>
           </div>
 
           <h4 className="text-lg font-bold text-white">{currentStep.title}</h4>
@@ -102,16 +102,16 @@ export const GameplayModal: React.FC<GameplayModalProps> = ({ isOpen, onClose, o
           {/* Q&A Cards */}
           {currentStep.question && (
             <div className="space-y-2 text-xs">
-              <div className="p-3 rounded-lg bg-[#131A2A] border border-slate-800 text-slate-200 font-semibold">
+              <div className="p-3 rounded-lg bg-[#00253e] border border-[#003A5D] text-slate-100 font-semibold">
                 {currentStep.question}
               </div>
-              <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 text-emerald-400 font-bold">
+              <div className="p-3 rounded-lg bg-[#00253e] border border-[#CA4D4E]/40 text-[#E8E61A] font-bold">
                 {currentStep.answer}
               </div>
             </div>
           )}
 
-          <p className="text-xs text-slate-300 leading-relaxed bg-[#131A2A] p-3 rounded-lg border border-slate-800">
+          <p className="text-xs text-slate-200 leading-relaxed bg-[#00253e] p-3 rounded-lg border border-[#003A5D]">
             {currentStep.description}
           </p>
 
@@ -123,10 +123,10 @@ export const GameplayModal: React.FC<GameplayModalProps> = ({ isOpen, onClose, o
                 onClick={() => setCurrentStepIndex(idx)}
                 className={`h-1.5 flex-1 rounded-full transition-all ${
                   idx === currentStepIndex
-                    ? 'bg-blue-500'
+                    ? 'bg-[#CA4D4E]'
                     : idx < currentStepIndex
-                    ? 'bg-blue-900'
-                    : 'bg-slate-800'
+                    ? 'bg-[#003A5D]'
+                    : 'bg-[#001D31]'
                 }`}
               />
             ))}
@@ -139,14 +139,14 @@ export const GameplayModal: React.FC<GameplayModalProps> = ({ isOpen, onClose, o
             <button
               onClick={() => setCurrentStepIndex((prev) => Math.max(0, prev - 1))}
               disabled={currentStepIndex === 0}
-              className="px-4 py-2 rounded-xl text-xs font-semibold bg-[#0B1020] text-slate-300 border border-slate-800 disabled:opacity-40"
+              className="px-4 py-2 rounded-xl text-xs font-semibold bg-[#001D31] text-slate-200 border border-[#003A5D] disabled:opacity-40"
             >
               Previous
             </button>
             <button
               onClick={() => setCurrentStepIndex((prev) => Math.min(MATCH_TIMELINE.length - 1, prev + 1))}
               disabled={currentStepIndex === MATCH_TIMELINE.length - 1}
-              className="px-4 py-2 rounded-xl text-xs font-semibold bg-[#0B1020] text-slate-300 border border-slate-800 disabled:opacity-40"
+              className="px-4 py-2 rounded-xl text-xs font-semibold bg-[#001D31] text-slate-200 border border-[#003A5D] disabled:opacity-40"
             >
               Next
             </button>
@@ -157,10 +157,10 @@ export const GameplayModal: React.FC<GameplayModalProps> = ({ isOpen, onClose, o
               onClose();
               onOpenBeta();
             }}
-            className="w-full sm:w-auto px-6 py-2.5 rounded-xl font-semibold text-xs text-white bg-blue-600 hover:bg-blue-500 shadow-sm flex items-center justify-center space-x-2"
+            className="w-full sm:w-auto px-6 py-2.5 rounded-xl font-semibold text-xs text-white bg-[#CA4D4E] hover:bg-[#b83d3e] shadow-lg flex items-center justify-center space-x-2"
           >
             <span>Launch Live Match Simulation</span>
-            <ArrowRight className="w-4 h-4 text-blue-100" />
+            <ArrowRight className="w-4 h-4 text-[#E8E61A]" />
           </button>
         </div>
 

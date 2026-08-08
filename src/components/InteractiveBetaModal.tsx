@@ -233,18 +233,18 @@ export const InteractiveBetaModal: React.FC<InteractiveBetaModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-      <div className="relative w-full max-w-4xl bg-[#131A2A] border border-slate-800 rounded-2xl shadow-xl overflow-hidden flex flex-col max-h-[90vh]">
+      <div className="relative w-full max-w-4xl bg-[#00253e] border border-[#003A5D] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
         
         {/* Top Header Bar */}
-        <div className="px-6 py-4 bg-[#0B1020] border-b border-slate-800 flex items-center justify-between">
+        <div className="px-6 py-4 bg-[#001D31] border-b border-[#003A5D] flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 font-mono font-bold">
+            <div className="w-8 h-8 rounded-xl bg-[#003A5D] border border-[#CA4D4E]/40 flex items-center justify-center text-[#E8E61A] font-mono font-bold">
               ?
             </div>
             <div>
               <div className="flex items-center space-x-2">
-                <span className="text-sm font-bold text-white">GuessMate Match Simulator</span>
-                <span className="px-2 py-0.5 text-[10px] font-mono font-semibold bg-[#131A2A] text-blue-400 border border-slate-800 rounded">
+                <span className="text-sm font-bold text-white">GuessMacha Match Simulator</span>
+                <span className="px-2 py-0.5 text-[10px] font-mono font-semibold bg-[#00253e] text-[#E8E61A] border border-[#003A5D] rounded">
                   LOBBY #{roomCode}
                 </span>
               </div>
@@ -253,7 +253,7 @@ export const InteractiveBetaModal: React.FC<InteractiveBetaModalProps> = ({
 
           <button
             onClick={onClose}
-            className="p-2 text-slate-400 hover:text-white hover:bg-[#131A2A] rounded-lg transition-colors"
+            className="p-2 text-slate-400 hover:text-white hover:bg-[#00253e] rounded-lg transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
@@ -273,14 +273,14 @@ export const InteractiveBetaModal: React.FC<InteractiveBetaModalProps> = ({
               </div>
 
               {/* Room Code Badge */}
-              <div className="p-4 rounded-xl bg-[#0B1020] border border-slate-800 flex items-center justify-between">
+              <div className="p-4 rounded-xl bg-[#001D31] border border-[#003A5D] flex items-center justify-between">
                 <div>
                   <p className="text-[10px] font-mono font-semibold text-slate-400 uppercase">Match ID</p>
-                  <p className="text-lg font-mono font-bold text-blue-400 tracking-wider">{roomCode}</p>
+                  <p className="text-lg font-mono font-bold text-[#E8E61A] tracking-wider">{roomCode}</p>
                 </div>
                 <button
                   onClick={() => setRoomCode('G3N-' + Math.floor(100 + Math.random() * 900))}
-                  className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#131A2A] text-slate-300 hover:text-white border border-slate-800 flex items-center space-x-1"
+                  className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#00253e] text-slate-200 hover:text-white border border-[#003A5D] flex items-center space-x-1"
                 >
                   <RefreshCw className="w-3.5 h-3.5" />
                   <span>Regenerate</span>
@@ -295,13 +295,13 @@ export const InteractiveBetaModal: React.FC<InteractiveBetaModalProps> = ({
                     onClick={() => setSelectedCategory(cat.id)}
                     className={`p-4 rounded-xl cursor-pointer transition-all border ${
                       selectedCategory === cat.id
-                        ? 'bg-blue-600/20 border-blue-500 text-white shadow-sm'
-                        : 'bg-[#0B1020] border-slate-800/80 hover:border-slate-700 text-slate-300'
+                        ? 'bg-[#CA4D4E]/20 border-[#CA4D4E] text-white shadow-sm'
+                        : 'bg-[#001D31] border-[#003A5D] hover:border-[#CA4D4E]/40 text-slate-300'
                     }`}
                   >
                     <p className="font-bold text-sm text-white">{cat.name}</p>
-                    <p className="text-[11px] text-slate-400 mt-1 line-clamp-1">{cat.description}</p>
-                    <span className="inline-block mt-2 text-[10px] font-mono text-blue-400">
+                    <p className="text-[11px] text-slate-300 mt-1 line-clamp-1">{cat.description}</p>
+                    <span className="inline-block mt-2 text-[10px] font-mono text-[#E8E61A]">
                       {cat.itemCount}+ entities
                     </span>
                   </div>
@@ -310,10 +310,10 @@ export const InteractiveBetaModal: React.FC<InteractiveBetaModalProps> = ({
 
               <button
                 onClick={() => setStep('SELECT_SECRET')}
-                className="w-full py-3.5 rounded-xl font-semibold text-xs text-white bg-blue-600 hover:bg-blue-500 shadow-sm transition-all flex items-center justify-center space-x-2"
+                className="w-full py-3.5 rounded-xl font-semibold text-xs text-white bg-[#CA4D4E] hover:bg-[#b83d3e] shadow-lg transition-all flex items-center justify-center space-x-2"
               >
                 <span>Proceed to Secret Selection</span>
-                <ArrowRight className="w-4 h-4 text-blue-100" />
+                <ArrowRight className="w-4 h-4 text-[#E8E61A]" />
               </button>
             </div>
           )}
@@ -322,7 +322,7 @@ export const InteractiveBetaModal: React.FC<InteractiveBetaModalProps> = ({
           {step === 'SELECT_SECRET' && (
             <div className="space-y-6 max-w-2xl mx-auto py-4">
               <div className="text-center space-y-2">
-                <span className="px-2.5 py-1 text-[10px] font-mono font-semibold bg-[#0B1020] text-blue-400 border border-slate-800 rounded uppercase">
+                <span className="px-2.5 py-1 text-[10px] font-mono font-semibold bg-[#001D31] text-[#E8E61A] border border-[#003A5D] rounded uppercase">
                   Dataset Domain: {CATEGORIES_DATA.find(c => c.id === selectedCategory)?.name}
                 </span>
                 <h3 className="text-xl font-bold text-white">Lock Secret Entity</h3>
@@ -333,13 +333,13 @@ export const InteractiveBetaModal: React.FC<InteractiveBetaModalProps> = ({
 
               {/* Search Box */}
               <div className="relative">
-                <Search className="w-4 h-4 text-slate-500 absolute left-3.5 top-3.5" />
+                <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                 <input
                   type="text"
                   placeholder="Filter candidate dataset..."
                   value={itemSearchQuery}
                   onChange={(e) => setItemSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-[#0B1020] border border-slate-800 rounded-xl text-sm text-white focus:outline-none focus:border-blue-500 font-medium"
+                  className="w-full pl-10 pr-4 py-3 bg-[#001D31] border border-[#003A5D] rounded-xl text-sm text-white focus:outline-none focus:border-[#CA4D4E] font-medium"
                 />
               </div>
 
@@ -353,8 +353,8 @@ export const InteractiveBetaModal: React.FC<InteractiveBetaModalProps> = ({
                       onClick={() => setUserSecret(item)}
                       className={`p-2.5 rounded-lg text-left text-xs font-semibold transition-all border ${
                         userSecret === item
-                          ? 'bg-blue-600 text-white font-bold border-blue-500 shadow-sm'
-                          : 'bg-[#0B1020] text-slate-300 border-slate-800 hover:border-slate-700'
+                          ? 'bg-[#CA4D4E] text-white font-bold border-[#CA4D4E] shadow-sm'
+                          : 'bg-[#001D31] text-slate-300 border-[#003A5D] hover:border-[#CA4D4E]/40'
                       }`}
                     >
                       {item}
@@ -362,10 +362,10 @@ export const InteractiveBetaModal: React.FC<InteractiveBetaModalProps> = ({
                   ))}
               </div>
 
-              <div className="p-4 rounded-xl bg-[#0B1020] border border-slate-800 flex items-center justify-between">
+              <div className="p-4 rounded-xl bg-[#001D31] border border-[#003A5D] flex items-center justify-between">
                 <div>
                   <p className="text-[10px] font-mono font-semibold text-slate-400 uppercase">Selected Secret Entity</p>
-                  <p className="text-base font-bold text-blue-400 font-mono mt-0.5">{userSecret || categoryItems[0]}</p>
+                  <p className="text-base font-bold text-[#E8E61A] font-mono mt-0.5">{userSecret || categoryItems[0]}</p>
                 </div>
                 <div className="flex items-center space-x-1.5 text-xs text-emerald-400 font-medium">
                   <CheckCircle2 className="w-4 h-4" />
@@ -375,9 +375,9 @@ export const InteractiveBetaModal: React.FC<InteractiveBetaModalProps> = ({
 
               <button
                 onClick={handleStartMatch}
-                className="w-full py-3.5 rounded-xl font-semibold text-xs text-white bg-blue-600 hover:bg-blue-500 shadow-sm transition-all flex items-center justify-center space-x-2"
+                className="w-full py-3.5 rounded-xl font-semibold text-xs text-white bg-[#CA4D4E] hover:bg-[#b83d3e] shadow-lg transition-all flex items-center justify-center space-x-2"
               >
-                <Play className="w-4 h-4 fill-current text-blue-100" />
+                <Play className="w-4 h-4 fill-current text-[#E8E61A]" />
                 <span>Initialize Match vs AI Opponent</span>
               </button>
             </div>
