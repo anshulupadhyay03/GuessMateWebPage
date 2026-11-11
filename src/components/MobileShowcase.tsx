@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MobileScreenType } from '../types';
 import { Smartphone, Shield, Trophy, Play, CheckCircle2, RotateCcw, Search, KeyRound, Sparkles, User, AlertTriangle, MessageSquare } from 'lucide-react';
+import { SiftMatesIcon } from './GuessMateIcon';
 
 export const MobileShowcase: React.FC = () => {
   const [activeScreen, setActiveScreen] = useState<MobileScreenType>('gameplay');
@@ -21,7 +22,7 @@ export const MobileShowcase: React.FC = () => {
   ];
 
   return (
-    <section id="mobile-showcase" className="py-20 bg-[#001D31] border-t border-[#003A5D] relative">
+    <section id="mobile-showcase" className="py-20 bg-[#001D31]/75 backdrop-blur-sm border-t border-[#003A5D]/60 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -34,7 +35,7 @@ export const MobileShowcase: React.FC = () => {
             Mobile Application Screens
           </h2>
           <p className="text-base text-slate-200">
-            Preview the official GuessMacha mobile interface designed for competitive play on iOS & Android.
+            Preview the official SiftMates mobile interface designed for competitive play on iOS & Android.
           </p>
         </div>
 
@@ -83,11 +84,9 @@ export const MobileShowcase: React.FC = () => {
                 {/* 1. SPLASH SCREEN */}
                 {activeScreen === 'splash' && (
                   <div className="flex-1 flex flex-col items-center justify-center text-center space-y-4 my-auto">
-                    <div className="w-14 h-14 rounded-2xl bg-[#00253e] border border-[#CA4D4E] flex items-center justify-center shadow-lg">
-                      <span className="text-xl font-extrabold text-[#E8E61A] font-mono">G</span>
-                    </div>
+                    <SiftMatesIcon size="xl" showGlow />
                     <div>
-                      <h3 className="text-base font-bold text-white">GuessMacha</h3>
+                      <h3 className="text-base font-bold text-white">SiftMates</h3>
                       <p className="text-[10px] text-slate-300">Competitive Social Deduction</p>
                     </div>
                   </div>

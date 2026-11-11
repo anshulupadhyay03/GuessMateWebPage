@@ -10,7 +10,7 @@ export const CategoryLibraryExplorer: React.FC = () => {
   const activeItems = PUZZLE_ITEMS_BY_CATEGORY[selectedCatId] || [];
 
   return (
-    <section id="categories" className="py-20 bg-[#001D31] border-t border-[#003A5D] relative">
+    <section id="categories" className="py-20 bg-[#001D31]/75 backdrop-blur-sm border-t border-[#003A5D]/60 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}

@@ -3,7 +3,7 @@ import { Brain, Scale, Target, ShieldCheck, Check, X } from 'lucide-react';
 
 export const PhilosophyGrid: React.FC = () => {
   return (
-    <section className="py-20 bg-[#001D31] border-t border-[#003A5D] relative">
+    <section className="py-20 bg-[#001D31]/75 backdrop-blur-sm border-t border-[#003A5D]/60 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -20,7 +20,7 @@ export const PhilosophyGrid: React.FC = () => {
           </p>
         </div>
 
-        {/* Comparison Cards: Trivia vs GuessMacha */}
+        {/* Comparison Cards: Trivia vs SiftMates */}
         <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
           
           {/* Traditional Trivia Card */}
@@ -53,14 +53,14 @@ export const PhilosophyGrid: React.FC = () => {
             </ul>
           </div>
 
-          {/* GuessMacha Card */}
+          {/* SiftMates Card */}
           <div className="p-8 rounded-2xl bg-[#003A5D] border border-[#CA4D4E]/80 space-y-6 relative shadow-xl">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <div className="w-9 h-9 rounded-xl bg-[#CA4D4E]/20 border border-[#CA4D4E]/40 flex items-center justify-center text-[#E8E61A]">
                   <Check className="w-4 h-4" />
                 </div>
-                <h3 className="text-xl font-bold text-white">GuessMacha Competitive Engine</h3>
+                <h3 className="text-xl font-bold text-white">SiftMates Competitive Engine</h3>
               </div>
               <span className="px-2.5 py-1 rounded text-[10px] font-mono font-semibold uppercase tracking-wider bg-[#E8E61A]/20 text-[#E8E61A] border border-[#E8E61A]/30">
                 100% STRATEGY

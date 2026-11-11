@@ -80,7 +80,7 @@ app.post('/api/ai-review', async (req, res) => {
       });
     }
 
-    const prompt = `You are the AI Fair Play Judge for the social deduction game 'GuessTheName'.
+    const prompt = `You are the AI Fair Play Judge for the social deduction game 'SiftMates'.
 Analyze the following match transcript for fairness, logical consistency, and truthfulness.
 
 Match Metadata:
@@ -103,7 +103,7 @@ Requirements:
       contents: prompt,
       config: {
         systemInstruction:
-          'You are an impartial, high-precision AI Fair Play reviewer for GuessTheName multiplayer deduction game. Evaluate truthfulness, logical consistency, and detect contradictions.',
+          'You are an impartial, high-precision AI Fair Play reviewer for SiftMates multiplayer deduction game. Evaluate truthfulness, logical consistency, and detect contradictions.',
         responseMimeType: 'application/json',
         responseSchema: {
           type: Type.OBJECT,
@@ -194,7 +194,7 @@ Do NOT reveal the secret directly.`;
         model: 'gemini-3.6-flash',
         contents: prompt,
         config: {
-          systemInstruction: 'You are an honest player in GuessTheName game. You know your secret item and answer questions strictly truthfully.',
+          systemInstruction: 'You are an honest player in SiftMates game. You know your secret item and answer questions strictly truthfully.',
           responseMimeType: 'application/json',
           responseSchema: {
             type: Type.OBJECT,
@@ -236,7 +236,7 @@ Do NOT ask for the name directly. Keep it under 12 words.`;
         model: 'gemini-3.6-flash',
         contents: prompt,
         config: {
-          systemInstruction: 'You are an expert deduction player in GuessTheName. Formulate smart, constrained questions.',
+          systemInstruction: 'You are an expert deduction player in SiftMates. Formulate smart, constrained questions.',
           responseMimeType: 'application/json',
           responseSchema: {
             type: Type.OBJECT,
@@ -285,7 +285,7 @@ async function startServer() {
   }
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`GuessTheName Marketing & Beta Web Server listening on http://0.0.0.0:${PORT}`);
+    console.log(`SiftMates Marketing & Beta Web Server listening on http://0.0.0.0:${PORT}`);
   });
 }
 

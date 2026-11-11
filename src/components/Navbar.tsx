@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Shield, Menu, X, Smartphone } from 'lucide-react';
-import { GuessMachaIcon } from './GuessMateIcon';
+import { SiftMatesIcon } from './GuessMateIcon';
 
 interface NavbarProps {
   onOpenBeta: () => void;
@@ -19,17 +19,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPreRegister }) => {
   };
 
   return (
-    <header className="sticky top-0 z-40 backdrop-blur-md bg-[#00253e]/90 border-b border-[#003A5D] transition-all">
+    <header className="sticky top-0 z-40 backdrop-blur-md bg-[#001D31]/85 border-b border-[#003A5D]/80 transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           
           {/* Logo & Brand */}
           <div className="flex items-center space-x-3 cursor-pointer group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <GuessMachaIcon size="md" />
+            <SiftMatesIcon size="md" showGlow />
             <div>
               <div className="flex items-center space-x-2">
                 <span className="text-lg sm:text-xl font-bold tracking-tight text-white font-sans">
-                  Guess<span className="text-[#CA4D4E]">Macha</span>
+                  Sift<span className="text-[#CA4D4E]">Mates</span>
                 </span>
                 <span className="px-2 py-0.5 text-[10px] font-mono font-semibold uppercase tracking-wider bg-[#003A5D] text-[#E8E61A] border border-[#CA4D4E]/40 rounded-full">
                   Competitive Strategy

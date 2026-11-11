@@ -1,5 +1,6 @@
 import React from 'react';
 import { Play, Shield, Users, ArrowRight, Zap, Brain, Smartphone, CheckCircle2 } from 'lucide-react';
+import { SiftMatesIcon } from './GuessMateIcon';
 
 interface HeroProps {
   onOpenPreRegister: () => void;
@@ -8,11 +9,11 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onOpenPreRegister, onOpenGameplayModal }) => {
   return (
-    <section className="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-32 bg-[#001D31]">
+    <section className="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-32 bg-transparent">
       
-      {/* Subtle Background Surface Lines */}
-      <div className="absolute inset-0 pointer-events-none opacity-20">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#003A5D_1px,transparent_1px),linear-gradient(to_bottom,#003A5D_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_30%,#000_70%,transparent_100%)]" />
+      {/* Subtle Ambient Vignette & Highlights */}
+      <div className="absolute inset-0 pointer-events-none opacity-25">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,rgba(0,58,93,0.3),transparent_100%)]" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -39,7 +40,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPreRegister, onOpenGameplayMod
 
             {/* Subheadline */}
             <p className="text-base sm:text-lg text-slate-200 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Master the art of competitive inquiry. GuessMacha fuses twenty questions, decision-tree strategy, and real-time social deduction into 2–5 minute live matches evaluated by AI Fair Play.
+              Master the art of competitive inquiry. SiftMates fuses twenty questions, decision-tree strategy, and real-time social deduction into 2–5 minute live matches evaluated by AI Fair Play.
             </p>
 
             {/* CTA Buttons */}
@@ -116,7 +117,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPreRegister, onOpenGameplayMod
                 {/* Match Status Bar */}
                 <div className="flex items-center justify-between pb-3 border-b border-[#003A5D]">
                   <div className="flex items-center space-x-2">
-                    <span className="w-2 h-2 rounded-full bg-[#E8E61A]" />
+                    <SiftMatesIcon size="xs" />
                     <span className="text-[11px] font-mono font-bold text-white">RANKED MATCH #2810</span>
                   </div>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#CA4D4E]/20 text-[#E8E61A] border border-[#CA4D4E]/40">

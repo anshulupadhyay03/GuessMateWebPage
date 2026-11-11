@@ -45,8 +45,8 @@ export const FAQ_DATA: FaqItem[] = [
   {
     id: 'faq-7',
     category: 'Monetization & Features',
-    question: 'Is GuessMacha free to play? Is there Pay-To-Win?',
-    answer: 'GuessMacha is 100% Free-to-Play and strictly NEVER Pay-to-Win. All purchases are strictly cosmetic (custom themes, avatar frames, animated victory celebrations, profile skins).'
+    question: 'Is SiftMates free to play? Is there Pay-To-Win?',
+    answer: 'SiftMates is 100% Free-to-Play and strictly NEVER Pay-to-Win. All purchases are strictly cosmetic (custom themes, avatar frames, animated victory celebrations, profile skins).'
   },
   {
     id: 'faq-8',

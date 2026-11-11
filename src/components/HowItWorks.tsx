@@ -56,7 +56,7 @@ export const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-20 bg-[#001D31] text-white relative border-t border-[#003A5D]">
+    <section id="how-it-works" className="py-20 bg-[#001D31]/75 backdrop-blur-sm text-white relative border-t border-[#003A5D]/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

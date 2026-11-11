@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { X, Play, Shield, Send, RefreshCw, AlertTriangle, Trophy, CheckCircle2, Search, ArrowRight, MessageSquare } from 'lucide-react';
 import { CATEGORIES_DATA, PUZZLE_ITEMS_BY_CATEGORY } from '../data/categories';
 import { QuestionTurn, AiReviewResult } from '../types';
+import { SiftMatesIcon } from './GuessMateIcon';
 
 interface InteractiveBetaModalProps {
   isOpen: boolean;
@@ -238,12 +239,10 @@ export const InteractiveBetaModal: React.FC<InteractiveBetaModalProps> = ({
         {/* Top Header Bar */}
         <div className="px-6 py-4 bg-[#001D31] border-b border-[#003A5D] flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 rounded-xl bg-[#003A5D] border border-[#CA4D4E]/40 flex items-center justify-center text-[#E8E61A] font-mono font-bold">
-              ?
-            </div>
+            <SiftMatesIcon size="sm" />
             <div>
               <div className="flex items-center space-x-2">
-                <span className="text-sm font-bold text-white">GuessMacha Match Simulator</span>
+                <span className="text-sm font-bold text-white">SiftMates Match Simulator</span>
                 <span className="px-2 py-0.5 text-[10px] font-mono font-semibold bg-[#00253e] text-[#E8E61A] border border-[#003A5D] rounded">
                   LOBBY #{roomCode}
                 </span>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { X, CheckCircle2, Mail, ArrowRight, Loader2 } from 'lucide-react';
-import { GuessMachaIcon } from './GuessMateIcon';
+import { SiftMatesIcon } from './GuessMateIcon';
 
 interface PreRegisterModalProps {
   isOpen: boolean;
@@ -64,7 +64,7 @@ export const PreRegisterModal: React.FC<PreRegisterModalProps> = ({ isOpen, onCl
         {!submitted ? (
           <div className="space-y-6 text-center">
             <div className="flex justify-center">
-              <GuessMachaIcon size="lg" />
+              <SiftMatesIcon size="lg" />
             </div>
 
             <div className="space-y-2">

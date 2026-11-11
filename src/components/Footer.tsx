@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, Github, Twitter, MessageSquare, Smartphone } from 'lucide-react';
-import { GuessMachaIcon } from './GuessMateIcon';
+import { SiftMatesIcon } from './GuessMateIcon';
 
 interface FooterProps {
   onOpenBeta: () => void;
@@ -9,7 +9,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenPreRegister }) => {
   return (
-    <footer className="bg-[#001D31] text-white border-t border-[#003A5D] relative overflow-hidden">
+    <footer className="bg-[#001D31]/85 backdrop-blur-md text-white border-t border-[#003A5D]/80 relative overflow-hidden">
       
       {/* Final Banner CTA */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center relative z-10">
@@ -43,9 +43,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPreRegister }) => {
           
           <div className="space-y-3">
             <div className="flex items-center space-x-2.5">
-              <GuessMachaIcon size="sm" />
+              <SiftMatesIcon size="sm" />
               <span className="text-lg font-bold text-white font-sans tracking-tight">
-                Guess<span className="text-[#CA4D4E]">Macha</span>
+                Sift<span className="text-[#CA4D4E]">Mates</span>
               </span>
               <span className="px-2 py-0.5 text-[9px] font-mono font-semibold bg-[#00253e] text-[#E8E61A] border border-[#003A5D] rounded">
                 v1.0
@@ -88,7 +88,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPreRegister }) => {
               </a>
             </div>
             <p className="mt-4 text-[11px] text-slate-400 font-mono">
-              © {new Date().getFullYear()} GuessMacha. Skill-based strategy gaming.
+              © {new Date().getFullYear()} SiftMates. Skill-based strategy gaming.
             </p>
           </div>
 
