@@ -5,13 +5,23 @@ import { SiftMatesIcon } from './GuessMateIcon';
 interface NavbarProps {
   onOpenBeta: () => void;
   onOpenPreRegister: () => void;
+  currentPage: 'home' | 'privacy' | 'terms';
+  onNavigate: (page: 'home' | 'privacy' | 'terms', sectionId?: string) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenPreRegister }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  onOpenPreRegister,
+  currentPage,
+  onNavigate,
+}) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false);
+    if (currentPage !== 'home') {
+      onNavigate('home', id);
+      return;
+    }
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -24,7 +34,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPreRegister }) => {
         <div className="flex items-center justify-between h-16 sm:h-20">
           
           {/* Logo & Brand */}
-          <div className="flex items-center space-x-3 cursor-pointer group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <div
+            className="flex items-center space-x-3 cursor-pointer group"
+            onClick={() => onNavigate('home')}
+          >
             <SiftMatesIcon size="md" showGlow />
             <div>
               <div className="flex items-center space-x-2">
@@ -40,7 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPreRegister }) => {
           </div>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-200">
+          <nav className="hidden md:flex items-center space-x-5 lg:space-x-7 text-sm font-medium text-slate-200 whitespace-nowrap">
             <button
               onClick={() => scrollToSection('how-it-works')}
               className="hover:text-[#E8E61A] transition-colors"
@@ -77,6 +90,32 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPreRegister }) => {
               className="hover:text-[#E8E61A] transition-colors"
             >
               FAQ
+            </button>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onNavigate('privacy');
+              }}
+              className={`transition-colors ${
+                currentPage === 'privacy'
+                  ? 'text-[#E8E61A] font-semibold'
+                  : 'hover:text-[#E8E61A]'
+              }`}
+            >
+              Privacy Policy
+            </button>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onNavigate('terms');
+              }}
+              className={`transition-colors ${
+                currentPage === 'terms'
+                  ? 'text-[#E8E61A] font-semibold'
+                  : 'hover:text-[#E8E61A]'
+              }`}
+            >
+              Terms
             </button>
           </nav>
 
@@ -149,6 +188,32 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPreRegister }) => {
             className="block w-full text-left py-2 text-slate-200 hover:text-[#E8E61A] text-sm font-medium"
           >
             FAQ
+          </button>
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false);
+              onNavigate('privacy');
+            }}
+            className={`block w-full text-left py-2 text-sm font-medium ${
+              currentPage === 'privacy'
+                ? 'text-[#E8E61A] font-semibold'
+                : 'text-slate-200 hover:text-[#E8E61A]'
+            }`}
+          >
+            Privacy Policy
+          </button>
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false);
+              onNavigate('terms');
+            }}
+            className={`block w-full text-left py-2 text-sm font-medium ${
+              currentPage === 'terms'
+                ? 'text-[#E8E61A] font-semibold'
+                : 'text-slate-200 hover:text-[#E8E61A]'
+            }`}
+          >
+            Terms &amp; Conditions
           </button>
           <div className="pt-2 flex flex-col space-y-2">
             <button

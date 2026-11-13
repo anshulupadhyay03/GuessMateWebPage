@@ -5,9 +5,10 @@ import { SiftMatesIcon } from './GuessMateIcon';
 interface FooterProps {
   onOpenBeta: () => void;
   onOpenPreRegister: () => void;
+  onNavigate: (page: 'home' | 'privacy' | 'terms', sectionId?: string) => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenPreRegister }) => {
+export const Footer: React.FC<FooterProps> = ({ onOpenPreRegister, onNavigate }) => {
   return (
     <footer className="bg-[#001D31]/85 backdrop-blur-md text-white border-t border-[#003A5D]/80 relative overflow-hidden">
       
@@ -59,18 +60,84 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPreRegister }) => {
           <div>
             <h4 className="font-bold text-white mb-3 text-xs uppercase tracking-wider font-mono">Platform</h4>
             <ul className="space-y-2">
-              <li><a href="#how-it-works" className="hover:text-[#E8E61A] transition-colors">How Matches Work</a></li>
-              <li><a href="#features" className="hover:text-[#E8E61A] transition-colors">Product Capabilities</a></li>
-              <li><a href="#categories" className="hover:text-[#E8E61A] transition-colors">Dataset Library</a></li>
+              <li>
+                <button
+                  onClick={() => onNavigate('home', 'how-it-works')}
+                  className="hover:text-[#E8E61A] transition-colors"
+                >
+                  How Matches Work
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('home', 'features')}
+                  className="hover:text-[#E8E61A] transition-colors"
+                >
+                  Product Capabilities
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('home', 'categories')}
+                  className="hover:text-[#E8E61A] transition-colors"
+                >
+                  Dataset Library
+                </button>
+              </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold text-white mb-3 text-xs uppercase tracking-wider font-mono">Verification & Trust</h4>
+            <h4 className="font-bold text-white mb-3 text-xs uppercase tracking-wider font-mono">Verification &amp; Trust</h4>
             <ul className="space-y-2">
-              <li><a href="#ai-review" className="hover:text-[#E8E61A] transition-colors">AI Fair Play Audit</a></li>
-              <li><a href="#mobile-showcase" className="hover:text-[#E8E61A] transition-colors">Mobile Interface Specs</a></li>
-              <li><a href="#faq" className="hover:text-[#E8E61A] transition-colors">Rules & Documentation</a></li>
+              <li>
+                <button
+                  onClick={() => onNavigate('home', 'ai-review')}
+                  className="hover:text-[#E8E61A] transition-colors"
+                >
+                  AI Fair Play Audit
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('home', 'mobile-showcase')}
+                  className="hover:text-[#E8E61A] transition-colors"
+                >
+                  Mobile Interface Specs
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('home', 'faq')}
+                  className="hover:text-[#E8E61A] transition-colors"
+                >
+                  Rules &amp; Documentation
+                </button>
+              </li>
+              <li>
+                <a
+                  href="/privacy-policy"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('privacy');
+                  }}
+                  className="text-[#E8E61A] hover:underline transition-colors font-medium"
+                >
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/terms-and-conditions"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('terms');
+                  }}
+                  className="text-[#E8E61A] hover:underline transition-colors font-medium"
+                >
+                  Terms &amp; Conditions
+                </a>
+              </li>
             </ul>
           </div>
 
