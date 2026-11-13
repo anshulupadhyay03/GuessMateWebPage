@@ -19,7 +19,10 @@ import { PreRegisterModal } from './components/PreRegisterModal';
 type AppPage = 'home' | 'privacy' | 'terms';
 
 function getPageFromLocation(): AppPage {
-  const path = window.location.pathname.toLowerCase().replace(/\/+$/, '');
+  const path = window.location.pathname
+    .toLowerCase()
+    .replace(/\.html$/, '')
+    .replace(/\/+$/, '');
   if (path === '/privacy-policy' || path === '/privacy' || window.location.hash === '#privacy-policy') {
     return 'privacy';
   }
@@ -50,6 +53,16 @@ export default function App() {
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
+
+  useEffect(() => {
+    if (currentPage === 'privacy') {
+      document.title = 'SiftMates - Privacy Policy';
+    } else if (currentPage === 'terms') {
+      document.title = 'SiftMates - Terms & Conditions';
+    } else {
+      document.title = 'SiftMates - Real-time Multiplayer Social Deduction Game';
+    }
+  }, [currentPage]);
 
   const navigateTo = (page: AppPage, sectionId?: string) => {
     const targetPath =
